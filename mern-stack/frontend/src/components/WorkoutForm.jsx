@@ -19,6 +19,7 @@ export default function WorkoutForm() {
       },
     });
     const json = await response.json();
+
     if (!response.ok) {
       setError(json.error);
     }
@@ -36,22 +37,23 @@ export default function WorkoutForm() {
       <label> Exercise Title: </label>
       <input
         type="text"
-        onchange={(e) => setTitle(e.target.value)}
         value={title}
+        onChange={(e) => setTitle(e.target.value)}
       />
       <label> Load: </label>
       <input
         type="number"
-        onchange={(e) => setLoad(e.target.value)}
+        onChange={(e) => setLoad(e.target.value)}
         value={load}
       />
       <label> Reps: </label>
       <input
         type="number"
-        onchange={(e) => setReps(e.target.value)}
+        onChange={(e) => setReps(e.target.value)}
         value={reps}
       />
       <button>Add Workout</button>
+      {error && <div className="error">{error}</div>}
     </form>
   );
 }
